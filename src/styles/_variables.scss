@@ -1,21 +1,21 @@
 $black: #000;
 $white: #fff;
 
-$dark-pink: #f18bc3; //squares
-$medium-pink: #f2e9ff; // squares
-$light-pink: #f8f3ff; //body
+$dark-pink: #f18bc3;
+$medium-pink: #f2e9ff;
+$light-pink: #f8f3ff;
 
-$dark-purple: #8e43ed; //squares text trash
-$medium-purple: #aa7ecd; //squares text
-$regular-purple: #d9bbff; // border
-$light-purple: #e0cff8; //squares
+$dark-purple: #8e43ed;
+$medium-purple: #aa7ecd;
+$regular-purple: #d9bbff;
+$light-purple: #e0cff8;
 
-$dark-grey: #303030; //text
-$medium-grey: #9f9f9f; //text
-$regular-grey: #afafaf; // size
-$light-grey: #ded9e4; //button
+$dark-grey: #303030;
+$medium-grey: #9f9f9f;
+$regular-grey: #afafaf;
+$light-grey: #ded9e4;
 
-$light-violet: #9993bd; //button
+$light-violet: #9993bd;
 
 $regular-green: #3dd73a;
 $light-green: #e1fee8;
@@ -23,6 +23,13 @@ $light-green: #e1fee8;
 $error: red;
 
 $main-font-size: 16px;
+
+$mobile-s: 320px;
+$mobile-m: 375px;
+$mobile-l: 425px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop-width: 1440px;
 
 @mixin input-border {
   border-radius: 12px;
@@ -42,11 +49,3 @@ $main-font-size: 16px;
 @mixin transition {
   transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
 }
-
-$mobile-s: 320px;
-$mobile-m: 375px;
-$mobile-l: 425px;
-$tablet: 768px;
-$laptop: 1024px;
-$less-desktop-width: 1439px;
-$desktop-width: 1440px;

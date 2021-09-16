@@ -1,14 +1,13 @@
-import './styles/index.scss';
 import { checkUploadFile, deleteFile } from './scripts/utils';
-
 import { isValidData, validateForm } from './scripts/validateSchema';
 import { getLocalStorageValue } from './scripts/localStorageUtils';
 import { createError } from './scripts/createError';
 
+import './styles/index.scss';
+
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form');
   const fileLoader = document.getElementById('input-file');
-  const deleteButton = document.getElementById('delete-file');
   const dropZone = document.getElementById('dropZone');
   const error = document.querySelector('.add-file__area .error');
   const username = document.getElementById('username');
@@ -16,9 +15,19 @@ document.addEventListener('DOMContentLoaded', function () {
   const country = document.getElementById('country');
   const city = document.getElementById('city');
   const birthday = document.getElementById('birthday');
+  const formStatus = document.querySelector('.form__status');
+  const formButton = document.querySelector('.form__button');
 
   const allSelectors = document.querySelectorAll('.form__input');
   let file;
+
+  getLocalStorageValue(username);
+  getLocalStorageValue(gender);
+  getLocalStorageValue(country);
+  getLocalStorageValue(city);
+  getLocalStorageValue(birthday);
+
+  validateForm(username, gender, country, city, birthday, file);
 
   if (window.FileList && window.File) {
     const reader = new FileReader();
@@ -60,18 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   fileLoader.addEventListener('click', () => {
     if (file) {
+      console.log(file);
       file = isValidData.isValidFile(file) ? file : null;
+
       validateForm(username, gender, country, city, birthday, file);
     }
   });
-
-  getLocalStorageValue(username);
-  getLocalStorageValue(gender);
-  getLocalStorageValue(country);
-  getLocalStorageValue(city);
-  getLocalStorageValue(birthday);
-
-  validateForm(username, gender, country, city, birthday, file);
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -79,28 +82,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     formData.append('image', file);
 
-    for (let p of formData) {
-      console.log(p);
-    }
+    sendDataForm().then(() => {
+      for (let data of formData) {
+        console.log(data);
+      }
+
+      setTimeout(function () {
+        formStatus.classList.remove('form__status_active');
+        localStorage.clear();
+        form.reset();
+        deleteFile();
+      }, 3000);
+    });
   });
-
-  async function formSend(event) {
-    event.preventDefault();
-    let formData = new FormData(form);
-    formData.append('image', fileLoader.files[0]);
-    console.log(formData);
-    try {
-      let response = await fetch('', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-      });
-
-      let json = await response.json();
-      console.log(json);
-    } catch (error) {
-      console.error('Ошибка:', error);
-    }
-  }
 
   form.addEventListener('input', () => {
     validateForm(username, gender, country, city, birthday, file);
@@ -112,4 +106,22 @@ document.addEventListener('DOMContentLoaded', function () {
       createError(event.target, event.target.id);
     });
   });
+
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('filecard__delete')) {
+      file = null;
+      deleteFile();
+      validateForm(username, gender, country, city, birthday, file);
+    }
+  });
+
+  function sendDataForm() {
+    return new Promise((resolve, reject) => {
+      setTimeout(function () {
+        resolve('Success!');
+        formStatus.classList.add('form__status_active');
+        formButton.disabled = true;
+      }, 3000);
+    });
+  }
 });
