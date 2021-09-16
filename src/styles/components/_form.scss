@@ -48,6 +48,7 @@
     & select {
       cursor: pointer;
       appearance: none;
+      -webkit-appearance: none;
 
       &:invalid {
         color: $medium-grey;
