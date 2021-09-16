@@ -1,0 +1,315 @@
+.section-form {
+  background: 0% 78% / auto no-repeat
+      url("data:image/svg+xml,%3Csvg width='338' height='658' viewBox='0 0 338 658' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='293.501' height='293.501' rx='32' transform='matrix(-0.866025 0.5 0.5 0.866025 154.408 256.347)' fill='%23F2E9FF'/%3E%3Crect width='167.788' height='167.788' rx='32' transform='matrix(-0.965926 0.258819 0.258819 0.965926 111.389 0.50238)' fill='%23F2E9FF'/%3E%3Crect width='116.44' height='116.44' rx='16' transform='matrix(-0.674787 0.738013 0.738013 0.674787 252.066 118.191)' fill='%23F2E9FF'/%3E%3C/svg%3E%0A"),
+    100% 50% / auto no-repeat
+      url("data:image/svg+xml,%3Csvg width='338' height='657' viewBox='0 0 338 657' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='183.592' y='255.844' width='293.501' height='293.501' rx='32' transform='rotate(30 183.592 255.844)' fill='%23F18BC3'/%3E%3Crect x='226.611' width='167.788' height='167.788' rx='32' transform='rotate(15 226.611 0)' fill='%238E43ED'/%3E%3Crect x='85.9343' y='117.688' width='116.44' height='116.44' rx='16' transform='rotate(47.5624 85.9343 117.688)' fill='%23E0CFF8'/%3E%3C/svg%3E%0A");
+
+  width: 100%;
+  min-height: 750px;
+  padding-bottom: 152px;
+  color: $dark-grey;
+  position: relative;
+  background-repeat: no-repeat;
+
+  &__title {
+    font-size: 40px;
+    line-height: 72px;
+    padding-top: 56px;
+  }
+}
+
+.form {
+  &__inner {
+    @include flex-row;
+    flex-wrap: wrap;
+    max-width: 1000px;
+  }
+
+  &__input {
+    margin-top: 40px;
+    @include flex-column;
+    width: 304px;
+    margin-right: 32px;
+    position: relative;
+
+    & input,
+    & select {
+      width: 304px;
+      height: 56px;
+      padding: 16px 30px 16px 12px;
+      @include input-border;
+      background: $white;
+    }
+
+    & input::placeholder {
+      color: $medium-grey;
+    }
+
+    & select {
+      cursor: pointer;
+      appearance: none;
+
+      &:invalid {
+        color: $medium-grey;
+      }
+      & option {
+        color: $dark-grey;
+      }
+
+      & option:first-child {
+        display: none;
+      }
+    }
+  }
+
+  &__select {
+    position: relative;
+    margin-right: 30px;
+
+    &-arrow {
+      position: absolute;
+      top: 50px;
+      right: 16px;
+      display: block;
+      height: 12px;
+      width: 12px;
+      pointer-events: none;
+      background: url('../assets/images/arrow.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  &__label {
+    font-family: 'Montserrat SemiBold', sans-serif;
+    line-height: 19px;
+    margin-bottom: 8px;
+  }
+
+  &__second-step {
+    display: flex;
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    @include transition;
+
+    &_active {
+      @include transition;
+      opacity: 1;
+      max-height: 100%;
+      overflow: inherit;
+    }
+
+    & .form__input:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__status {
+    position: absolute;
+    bottom: 66px;
+    left: 344px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -40px;
+      width: 32px;
+      height: 32px;
+      background: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23E1FEE8'/%3E%3Cpath d='M22.3394 12.0754L13.16 20.5283L9.66016 16.9056' stroke='%233DD73A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    }
+  }
+
+  &__button {
+    position: absolute;
+    bottom: 48px;
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: $white;
+    background: $dark-purple;
+    width: 211px;
+    height: 56px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.9;
+    }
+    &:disabled {
+      background: $light-grey;
+      pointer-events: none;
+    }
+  }
+}
+
+::-webkit-calendar-picker-indicator {
+  background: none;
+  background-size: contain;
+  display: none;
+}
+
+#input-file {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.add-file {
+  &__area {
+    width: 976px;
+    height: 104px;
+    background: $white;
+    @include flex-row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-right: 0;
+    max-height: 0;
+    opacity: 0;
+    border: none;
+    overflow: hidden;
+
+    &_active {
+      border: 1px dashed $regular-purple;
+      max-height: 100%;
+      overflow: inherit;
+      opacity: 1;
+      @include transition;
+    }
+  }
+
+  &__label {
+    width: 212px;
+    height: 56px;
+    margin: 0;
+    padding: 16px;
+    font-family: 'Montserrat Medium', sans-serif;
+    @include input-border;
+    color: $dark-purple;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__text {
+    line-height: 24px;
+    letter-spacing: 0.3px;
+    color: $light-violet;
+    font-family: 'Gilroy', sans-serif;
+    margin-right: 16px;
+  }
+}
+
+.error {
+  max-height: 0;
+  opacity: 0;
+  color: $error;
+  top: 100%;
+  font-size: 14px;
+  position: absolute;
+
+  &_active {
+    max-height: 100px;
+    opacity: 1;
+
+    @include transition;
+  }
+}
+
+@media (max-width: $tablet) {
+  .section-form {
+    background: 0% 40% / 40% no-repeat
+        url("data:image/svg+xml,%3Csvg width='338' height='658' viewBox='0 0 338 658' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='293.501' height='293.501' rx='32' transform='matrix(-0.866025 0.5 0.5 0.866025 154.408 256.347)' fill='%23F2E9FF'/%3E%3Crect width='167.788' height='167.788' rx='32' transform='matrix(-0.965926 0.258819 0.258819 0.965926 111.389 0.50238)' fill='%23F2E9FF'/%3E%3Crect width='116.44' height='116.44' rx='16' transform='matrix(-0.674787 0.738013 0.738013 0.674787 252.066 118.191)' fill='%23F2E9FF'/%3E%3C/svg%3E%0A"),
+      100% 40% / 40% no-repeat
+        url("data:image/svg+xml,%3Csvg width='338' height='657' viewBox='0 0 338 657' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='183.592' y='255.844' width='293.501' height='293.501' rx='32' transform='rotate(30 183.592 255.844)' fill='%23F18BC3'/%3E%3Crect x='226.611' width='167.788' height='167.788' rx='32' transform='rotate(15 226.611 0)' fill='%238E43ED'/%3E%3Crect x='85.9343' y='117.688' width='116.44' height='116.44' rx='16' transform='rotate(47.5624 85.9343 117.688)' fill='%23E0CFF8'/%3E%3C/svg%3E%0A");
+  }
+
+  .add-file {
+    &__area {
+      height: 175px;
+      @include flex-column;
+    }
+
+    &__text {
+      margin: 0 0 20px;
+      position: relative;
+    }
+  }
+
+  .form {
+    &__status {
+      left: 300px;
+    }
+  }
+}
+
+@media (max-width: $mobile-m) {
+  .section-form {
+    background: 101% 1% / auto no-repeat
+      url("data:image/svg+xml,%3Csvg width='127' height='141' viewBox='0 0 127 141' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='56.4604' height='56.4604' rx='16' transform='matrix(-0.140077 -0.990141 -0.990141 0.140077 104.865 78.1335)' fill='%23F18BC3'/%3E%3Crect width='32.2772' height='32.2772' rx='10' transform='matrix(-0.787361 0.616492 0.616492 0.787361 34.123 72.4483)' fill='%238E43ED'/%3E%3C/svg%3E%0A");
+    padding-bottom: 144px;
+
+    &__title {
+      padding-top: 40px;
+      font-size: 32px;
+      line-height: 41px;
+    }
+  }
+
+  .form {
+    &__label {
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    &__input {
+      & input::placeholder {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    &__button {
+      width: 346px;
+    }
+
+    &__status {
+      bottom: 15px;
+      left: 160px;
+    }
+  }
+
+  .add-file {
+    &__text {
+      width: 216px;
+      text-align: center;
+      margin: 0 0 16px;
+    }
+
+    &__label {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}
+
+@media (max-width: $mobile-s) {
+  .form {
+    &__button {
+      width: 290px;
+    }
+
+    &__status {
+      left: 130px;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.filecard {
+  @include input-border;
+  width: 256px;
+  height: 56px;
+  margin-top: 8px;
+  background: $white;
+
+  &__inner {
+    @include flex-row;
+    align-items: center;
+    padding: 8px 15px 8px 12px;
+    height: 100%;
+  }
+
+  &__img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  &__info {
+    line-height: 18px;
+    @include flex-column;
+  }
+
+  &__name {
+    font-size: 14px;
+    color: $dark-grey;
+  }
+
+  &__ext {
+    font-size: 12px;
+    color: $regular-grey;
+    margin-top: 2px;
+  }
+
+  &__delete {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='13' viewBox='0 0 12 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.41797 3L3.78059 1H7.89034L8.25297 3' stroke='%238E43ED' stroke-width='1.33333' stroke-linejoin='round'/%3E%3Cpath d='M1 3H10.67' stroke='%238E43ED' stroke-width='1.33333' stroke-linecap='round'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.0657 3L9.15918 12.3333H2.51105L1.60449 3H10.0657Z' stroke='%238E43ED' stroke-width='1.33333' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E ");
+    width: 12px;
+    height: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: $mobile-m) {
+  .filecard {
+    width: 100%;
+  }
+}

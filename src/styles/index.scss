@@ -1,0 +1,67 @@
+@import './normalize';
+@import './fonts.scss';
+@import './variables';
+@import './components/form';
+@import './components//filecard';
+@import './components//usercard';
+@import './components//navbar';
+@import './components//slider';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat Regular', sans-serif;
+  font-size: $main-font-size;
+  max-width: $desktop-width;
+  margin: 0 auto;
+  background: $light-pink;
+}
+
+.container {
+  margin: 0 64px;
+}
+
+.title {
+  color: $dark-grey;
+  font-family: 'Montserrat ExtraBold', sans-serif;
+}
+
+.header {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+  }
+}
+
+@media (max-width: $laptop) {
+  .container {
+    margin: 0 40px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .container {
+    margin: 0 30px;
+  }
+}
+
+@media (max-width: $mobile-m) {
+  .container {
+    margin: 0 14px;
+  }
+
+  .header {
+    &__content {
+      justify-content: center;
+      height: 64px;
+    }
+  }
+
+  .logo {
+    width: 78px;
+  }
+}
