@@ -156,11 +156,6 @@
   }
 }
 
-select:focus ~ .form__select-arrow {
-  transform: rotate(180deg);
-  @include transition;
-}
-
 @media (max-width: $tablet) {
   .slider {
     padding: 25px 0;
