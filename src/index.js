@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   fileLoader.addEventListener('click', () => {
     if (file) {
-      console.log(file);
       file = isValidData.isValidFile(file) ? file : null;
 
       validateForm(username, gender, country, city, birthday, file);
@@ -94,6 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
         deleteFile();
       }, 3000);
     });
+  });
+
+  gender.addEventListener('click', () => {
+    document.querySelector('.form__select-arrow').classList.toggle('form__select-arrow_active');
   });
 
   form.addEventListener('input', () => {
