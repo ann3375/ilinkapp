@@ -1,0 +1,42 @@
+.menu {
+  &__list {
+    @include flex-row;
+    font-family: 'Montserrat Medium', sans-serif;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+
+    &:last-child {
+      margin-right: 112px;
+    }
+  }
+
+  &__link {
+    color: $dark-purple;
+  }
+}
+
+@media (max-width: $tablet) {
+  .menu {
+    &__item {
+      text-align: center;
+
+      &:not(:last-child) {
+        margin: 0 10px;
+      }
+
+      &:last-child {
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile-m) {
+  .menu {
+    display: none;
+  }
+}

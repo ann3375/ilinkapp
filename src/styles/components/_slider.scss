@@ -1,0 +1,253 @@
+.slider {
+  background: $white;
+  max-height: 647px;
+  padding: 56px 0;
+
+  & input {
+    display: none;
+  }
+
+  &__inner {
+    max-width: 1312px;
+  }
+
+  &__content {
+    position: relative;
+    text-align: center;
+  }
+
+  &__controls-panel {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & label {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #fff;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+  }
+}
+
+.slides {
+  &__inner {
+    width: 100%;
+    overflow: hidden;
+    max-height: 535px;
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__desc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: $white;
+    padding: 0 70px;
+    width: 100%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  &__title {
+    font-family: 'Montserrat ExtraBold', sans-serif;
+    font-size: 56px;
+    line-height: 72px;
+  }
+
+  &__text {
+    font-family: 'Montserrat Medium', sans-serif;
+    margin-top: 16px;
+    font-size: 18px;
+    line-height: 32px;
+    max-height: 150px;
+    max-width: 580px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  &__images {
+    width: 300%;
+
+    transition: all 800ms cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  & article {
+    width: calc(100% / 3);
+    float: left;
+
+    & img {
+      width: 100%;
+      border-radius: 32px;
+      object-fit: cover;
+      max-height: 535px;
+    }
+  }
+}
+
+#switch1:checked ~ .slider__controls label:nth-child(3),
+#switch2:checked ~ .slider__controls label:nth-child(1),
+#switch3:checked ~ .slider__controls label:nth-child(2) {
+  background: url('../assets/images/arrow-left.svg') no-repeat;
+  display: block;
+  height: 34px;
+  width: 20px;
+  position: absolute;
+  left: 32px;
+  top: calc(50% - 17px);
+  cursor: pointer;
+}
+
+#switch1:checked ~ .slider__controls label:nth-child(2),
+#switch2:checked ~ .slider__controls label:nth-child(3),
+#switch3:checked ~ .slider__controls label:nth-child(1) {
+  background: url('../assets/images/arrow-right.svg') no-repeat;
+  display: block;
+  height: 34px;
+  width: 20px;
+  position: absolute;
+  top: calc(50% - 17px);
+  right: 32px;
+  cursor: pointer;
+}
+
+#switch1:checked ~ #slides .slides__images {
+  margin-left: 0;
+}
+
+#switch2:checked ~ #slides .slides__images {
+  margin-left: -100%;
+}
+
+#switch3:checked ~ #slides .slides__images {
+  margin-left: -200%;
+}
+
+#switch1:checked ~ .slider__controls-panel label:nth-child(1),
+#switch2:checked ~ .slider__controls-panel label:nth-child(2),
+#switch3:checked ~ .slider__controls-panel label:nth-child(3) {
+  width: 12px;
+  height: 12px;
+  background: $white;
+  border-radius: 50%;
+}
+
+@media (max-width: $laptop) {
+  .slider {
+    padding: 30px 0;
+  }
+
+  .slides {
+    &__title {
+      font-size: 45px;
+    }
+
+    &__text {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .slider {
+    padding: 25px 0;
+  }
+
+  .slides {
+    &__title {
+      font-size: 35px;
+    }
+
+    &__text {
+      font-size: 14px;
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: $mobile-l) {
+  .slider {
+    padding: 32px 0;
+    height: auto;
+
+    &__inner {
+      width: 346px;
+      margin: 0 auto;
+    }
+
+    &__controls-panel {
+      transform: none;
+      width: 60px;
+      left: 41%;
+      bottom: 43px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .slides {
+    &__desc {
+      width: 254px;
+      padding: 0;
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 48px;
+    }
+
+    &__text {
+      padding-top: 16px;
+      font-size: 15px;
+      line-height: 24px;
+      width: 100%;
+      margin: 0;
+    }
+
+    &__item {
+      & img {
+        background: url('../assets/images/slide-m.png');
+        width: 0;
+        height: 0;
+        padding-top: 535px;
+      }
+    }
+  }
+
+  #switch1:checked ~ .slider__controls label:nth-child(3),
+  #switch2:checked ~ .slider__controls label:nth-child(1),
+  #switch3:checked ~ .slider__controls label:nth-child(2) {
+    transform: scale(0.85);
+    top: calc(90% - 15px);
+    left: 27px;
+  }
+
+  #switch1:checked ~ .slider__controls label:nth-child(2),
+  #switch2:checked ~ .slider__controls label:nth-child(3),
+  #switch3:checked ~ .slider__controls label:nth-child(1) {
+    transform: scale(0.85);
+    top: calc(90% - 15px);
+    right: 27px;
+  }
+}
+
+@media (max-width: $mobile-l) {
+  .slider {
+    padding: 32px 0;
+    height: auto;
+  }
+}
+
+@media (max-width: $mobile-s) {
+  .slider {
+    &__inner {
+      width: 100%;
+    }
+  }
+}

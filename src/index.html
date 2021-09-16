@@ -1,10 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tell about yourself</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header__content">
+          <img class="logo" src="./assets/images/logo.svg" alt="logo" />
+          <nav class="menu">
+            <ul class="menu__list">
+              <li class="menu__item"><a class="menu__link" href="#user">Jane Doe</a></li>
+              <li class="menu__item">
+                <a class="menu__link" href="#about">Tell us about yourself</a>
+              </li>
+              <li class="menu__item"><a class="menu__link" href="#footer">Slider</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="user">
+        <div class="user__content">
+          <div class="container">
+            <div class="user__inner">
+              <div class="user__avatar">
+                <img class="avatar" src="./assets/images/avatar.png" alt="avatar" />
+              </div>
+
+              <div class="user__info">
+                <h1 class="user__name title">Jane Doe</h1>
+                <ul class="user__list">
+                  <li class="user__item">Date of birth<span>21.04.2001</span></li>
+                  <li class="user__item">Gender<span>Female</span></li>
+                  <li class="user__item">Country<span>Corea</span></li>
+                </ul>
+                <h2 class="user-desc__title title">About me</h2>
+                <div class="user-desc__text">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                  <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-form">
+          <div class="container">
+            <h2 class="title section-form__title">Tell us about yourself</h2>
+            <form id="form" class="form" action="#" method="POST">
+              <div class="form__inner">
+                <div class="form__input">
+                  <label class="form__label" for="username">Your name</label>
+                  <input
+                    id="username"
+                    type="text"
+                    placeholder="Tell us your name"
+                    required
+                    name="username"
+                    pattern="[A-Za-zА-Яа-яЁё]{2,20}"
+                    title="Your name must be more then 1 and less then 20 letters"
+                  />
+                  <span class="error"></span>
+                </div>
+
+                <div class="form__input form__select">
+                  <label class="form__label" for="gender">Your gender</label>
+
+                  <select title="Your must choose your gender" id="gender" required name="gender">
+                    <option selected value="">Chose your gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Helicopter">Helicopter</option>
+                  </select>
+
+                  <span class="form__select-arrow"></span>
+                  <span class="error"></span>
+                </div>
+
+                <div class="form__second-step">
+                  <div class="form__input">
+                    <label class="form__label" for="country">Your country</label>
+                    <input
+                      pattern="[A-Za-zА-Яа-яЁё]{2,20}"
+                      title="Your country must be more then 1 and less then 20 letters"
+                      id="country"
+                      type="text"
+                      name="country"
+                      placeholder="Where are you from?"
+                      required
+                    />
+                    <span class="error"></span>
+                  </div>
+
+                  <div class="form__input">
+                    <label class="form__label" for="city">Your city</label>
+                    <input
+                      pattern="[A-Za-zА-Яа-яЁё]{2,20}"
+                      title="Your city must be more then 1 and less then 20 letters"
+                      id="city"
+                      name="city"
+                      type="text"
+                      placeholder="Your native city"
+                      required
+                    />
+                    <span class="error"></span>
+                  </div>
+
+                  <div class="form__input">
+                    <label class="form__label" for="birthday">Your date of birth</label>
+                    <input
+                      id="birthday"
+                      name="birthday"
+                      type="text"
+                      placeholder="dd.mm.yyyy"
+                      value=""
+                      required
+                      maxlength="10"
+                    />
+                    <span class="error"></span>
+                  </div>
+                </div>
+
+                <div id="dropZone" class="form__input add-file__area">
+                  <span class="add-file__text">Proof your identity with some documents</span>
+                  <label class="form__label add-file__label" for="input-file">Add document</label>
+                  <input accept=".jpg, .png, .gif" class="file" type="file" id="input-file" />
+                  <span class="error"> </span>
+                </div>
+
+                <div id="file-list" class="file-list"></div>
+
+                <button disabled class="form__button" type="submit">Send info</button>
+
+                <span class="form__status">Completed</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <aside class="slider">
+        <div class="container">
+          <div class="slider__inner">
+            <input checked type="radio" name="respond" />
+            <article class="slider__content">
+              <input checked type="radio" name="slider" id="switch1" />
+              <input type="radio" name="slider" id="switch2" />
+              <input type="radio" name="slider" id="switch3" />
+              <div class="slides" id="slides">
+                <div class="slides__inner">
+                  <div class="slides__images">
+                    <article class="slides__item">
+                      <img src="./assets/images/slide.png" />
+                      <div class="slides__desc">
+                        <h3 class="slides__title">Slide this photo</h3>
+                        <p class="slides__text">
+                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                          dolore eu fugiat nulla pariatur
+                        </p>
+                      </div>
+                    </article>
+                    <article class="slides__item">
+                      <img src="./assets/images/slide.png" />
+                      <div class="slides__desc">
+                        <h3 class="slides__title">Slide this photo</h3>
+                        <p class="slides__text">
+                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                          dolore eu fugiat nulla pariatur
+                        </p>
+                      </div>
+                    </article>
+                    <article class="slides__item">
+                      <img src="./assets/images/slide.png" />
+                      <div class="slides__desc">
+                        <h3 class="slides__title">Slide this photo</h3>
+                        <p class="slides__text">
+                          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                          dolore eu fugiat nulla pariatur
+                        </p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </div>
+              <div class="slider__controls">
+                <label for="switch1"></label>
+                <label for="switch2"></label>
+                <label for="switch3"></label>
+              </div>
+              <div class="slider__controls-panel">
+                <label for="switch1"></label>
+                <label for="switch2"></label>
+                <label for="switch3"></label>
+              </div>
+            </article>
+          </div>
+        </div>
+      </aside>
+    </footer>
+  </body>
 </html>
