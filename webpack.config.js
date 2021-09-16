@@ -80,7 +80,6 @@ module.exports = {
 
   entry: {
     main: ['@babel/polyfill', './index.js'],
-    // other: '',
   },
 
   optimization: optimization(),
