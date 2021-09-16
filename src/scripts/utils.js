@@ -1,6 +1,8 @@
 import { isValidData } from './validateSchema';
 
 const container = document.getElementById('file-list');
+const deleteButton = document.getElementById('delete-file');
+const fileLoader = document.getElementById('input-file');
 
 export function convertFileSize(size) {
   if (size > 100000) {
@@ -25,8 +27,6 @@ export function addFileCardToHTML(src, file) {
   content.innerHTML = createFileCard(src, file);
   container.appendChild(content);
 
-  const deleteButton = document.getElementById('delete-file');
-
   if (deleteButton) {
     deleteButton.addEventListener('click', () => deleteFile());
   }
@@ -36,7 +36,7 @@ export function createFileCard(src, fileInfo) {
   return `<div class="filecard__inner">
     <img class="filecard__img" src="${src}" alt='${fileInfo.name}' />
     <div class="filecard__info">
-      <span class="filecard__name">${fileInfo.name}</span>
+      <span class="filecard__name">${fileInfo.name.split('.')[0]}</span>
       <span class="filecard__ext">${returnFileExt(fileInfo.type)} ${convertFileSize(
     fileInfo.size
   )}</span>
@@ -45,6 +45,7 @@ export function createFileCard(src, fileInfo) {
 }
 
 export function deleteFile() {
+  fileLoader.value = '';
   const el = document.getElementById('file-list');
   el.innerHTML = '';
 }

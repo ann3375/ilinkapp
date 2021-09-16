@@ -1,5 +1,3 @@
-const fileLoader = document.getElementById('input-file');
-
 const secondStepForm = document.querySelector('.form__second-step');
 const thirdStepForm = document.querySelector('.add-file__area');
 const formButton = document.querySelector('.form__button');
@@ -10,8 +8,6 @@ export const isValidData = {
       !['image/jpeg', 'image/png', 'image/gif'].includes(file.type) ||
       file.size > 5 * 1024 * 1024
     ) {
-      fileLoader.value = '';
-
       return false;
     }
 

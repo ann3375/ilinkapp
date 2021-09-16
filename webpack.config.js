@@ -52,7 +52,7 @@ const plugins = () => {
       patterns: [
         {
           from: path.resolve(__dirname, 'src/assets/images'),
-          to: path.resolve(__dirname, 'dist/assets/images'),
+          to: path.resolve(__dirname, 'dist/assets'),
         },
         {
           from: path.resolve(__dirname, 'src/favicon.ico'),
